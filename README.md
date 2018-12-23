@@ -5,3 +5,6 @@
 - AutoMapper;
 - DataBase instead of JSON;
 - etc.
+
+## Screenshots:
+![Screenshot](screenshots/main.png)
