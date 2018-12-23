@@ -6,6 +6,7 @@ interface DialogState {
 
 export interface CommonState {
   dialog: Readonly<DialogState>;
+  notification: string[];
 }
 
 interface MutableState {

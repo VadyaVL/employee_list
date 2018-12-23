@@ -15,7 +15,23 @@ function closeDialog(dialogName: string): ActionWith<string> {
   };
 }
 
+function addNotification(text: string): ActionWith<string> {
+  return {
+    type: CommonActionTypes.ADD_NOTIFICATION,
+    payload: text,
+  };
+}
+
+function removeNotification(index: number): ActionWith<number> {
+  return {
+    type: CommonActionTypes.REMOVE_NOTIFICATION,
+    payload: index,
+  };
+}
+
 export const CommonActions = {
   openDialog,
   closeDialog,
+  addNotification,
+  removeNotification,
 };

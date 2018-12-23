@@ -1,0 +1,16 @@
+.button {
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  padding: 4px 6px;
+  border: 1px solid black;
+  margin: 1px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  &:hover {
+    border-width: 2px;
+    margin: 0px;
+  }
+}

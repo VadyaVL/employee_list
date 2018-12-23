@@ -1,9 +1,11 @@
 import * as React from 'react';
 import autobind from 'autobind-decorator';
+import * as moment from 'moment';
 
 import './table.scss';
 
 import { Employee } from '../interfaces';
+import { Action } from '../../../common/components/action';
 
 interface EmployeeItemProps {
   item: Employee;
@@ -18,22 +20,20 @@ export class EmployeeItem extends React.Component<EmployeeItemProps> {
 
     return (
       <div className='employee-item row'>
-        <span className='col'>
+        <span className='employee-item__name col'>
           {`${item.firstName} ${item.lastName}`}
         </span>
-        <span className='col'>
+        <span className='employee-item__jobs col'>
           {jobsValue}
         </span>
-        <span className='col'>
-          {item.employmentDate}
+        <span className='employee-item__employment-date col'>
+          {moment(item.employmentDate).format('YYYY/MM/DD hh:mm')}
         </span>
-        <span className='col'>
+        <span className='employee-item__rate col'>
           {`${item.rate}$`}
         </span>
-        <span className='col'>
-          <span onClick={this.onDelete}>
-            Delete
-          </span>
+        <span className='employee-item__action col'>
+          <Action text='Delete' onClick={this.onDelete} />
         </span>
       </div>
     );

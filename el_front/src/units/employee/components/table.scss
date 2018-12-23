@@ -1,11 +1,51 @@
 .row {
-  width: 100%;
+  // display: table-row;
+  border-bottom: 1px solid;
+  border-bottom-color: black;
+
   &.header {
     font-weight: 700;
+    background-color: rgba(100, 100, 100, 0.3);
+  }
+  &:nth-child(2n) {
+    background-color: rgba(100, 100, 100, 0.1);
   }
 }
 
 .col {
+  // display: table-cell;
   display: inline-block;
-  margin: 4px 6px;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+
+.employee-item {
+  &__name,
+  &__jobs,
+  &__employment-date {
+    width: 25%;
+  }
+  &__rate {
+    width: 10%;
+  }
+  &__action {
+    width: 15%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .employee-item {
+    &__name,
+    &__jobs,
+    &__employment-date {
+      width: 150px;
+    }
+    &__rate {
+      width: 50px;
+    }
+    &__action {
+      width: 50px;
+    }
+  }
 }

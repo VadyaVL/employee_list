@@ -60,7 +60,7 @@ namespace el_back.dal.Repositories
             var newId = maxId + 1;
 
             newEmployee.Id = newId;
-            employee.Add(newEmployee);
+            employee.Insert(0, newEmployee);
 
             this.WriteAll(employee);
             return newId;

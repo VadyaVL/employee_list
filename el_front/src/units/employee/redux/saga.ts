@@ -1,3 +1,4 @@
+import { CommonActions } from './../../../common/redux/actions';
 import { EmployeeApi } from './api';
 import { Job } from './../interfaces/job';
 import { SagaIterator } from 'redux-saga';
@@ -15,6 +16,7 @@ function* loadEmployeeList(action: Action): SagaIterator {
     yield put(EmployeeActions.loadEmployeeListSucceeded(data));
   } catch (error) {
     console.error(error);
+    yield put(CommonActions.addNotification('Something wrong while employee list loading.'));
   }
 }
 
@@ -29,6 +31,7 @@ function* createEmployee(action: ActionWith<EmployeeFormModel>): SagaIterator {
     yield put(EmployeeActions.createEmployeeSucceeded(data));
   } catch (error) {
     console.error(error);
+    yield put(CommonActions.addNotification('Employee not added.'));
   }
 }
 
@@ -40,6 +43,7 @@ function* deleteEmployee(action: ActionWith<number>): SagaIterator {
     }
   } catch (error) {
     console.error(error);
+    yield put(CommonActions.addNotification('Employee not deleted.'));
   }
 }
 
@@ -49,6 +53,7 @@ function* loadJobList(action: Action): SagaIterator {
     yield put(EmployeeActions.loadJobListSucceeded(data));
   } catch (error) {
     console.error(error);
+    yield put(CommonActions.addNotification('Something wrong while job list loading.'));
   }
 }
 
