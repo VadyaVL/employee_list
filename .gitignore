@@ -1,0 +1,13 @@
+
+el_front/.vscode/
+el_front/node_modules/
+el_front/yarn.lock
+.vs/
+el_back.dal/obj/
+el_back.dal/bin/
+el_back.models/obj/
+el_back.models/bin/
+el_back.logic/obj/
+el_back.logic/bin/
+el_back/obj/
+el_back/bin/

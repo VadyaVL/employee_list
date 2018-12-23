@@ -1,6 +1,7 @@
+import { EmployeeApi } from './api';
 import { Job } from './../interfaces/job';
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, call } from 'redux-saga/effects';
 import { Action } from 'redux';
 
 import { ActionWith } from './../../../common/interfaces/action-with';
@@ -10,13 +11,8 @@ import { EmployeeActions } from './actions';
 
 function* loadEmployeeList(action: Action): SagaIterator {
   try {
-    // load from API:
-    const mock: Employee[] = [
-      { id: 1, firstName: 'Вадим', lastName: 'Литвин', jobs: [{ id: 1, title: 'developer' }], rate: 1200, employmentDate: '2018-12-22', creationDate: '2018-12-22' },
-      { id: 2, firstName: 'Дмитро', lastName: 'Шевчук', jobs: [{ id: 1, title: 'developer' }], rate: 1000, employmentDate: '2018-12-22', creationDate: '2018-12-22' },
-    ];
-
-    yield put(EmployeeActions.loadEmployeeListSucceeded(mock));
+    const data: Employee[] = yield call(EmployeeApi.loadEmployeeList)
+    yield put(EmployeeActions.loadEmployeeListSucceeded(data));
   } catch (error) {
     console.error(error);
   }
@@ -24,18 +20,13 @@ function* loadEmployeeList(action: Action): SagaIterator {
 
 function* createEmployee(action: ActionWith<EmployeeFormModel>): SagaIterator {
   try {
-    // delete with Api -> bool
-    // get new from api
-
-    yield put(EmployeeActions.createEmployeeSucceeded({
-      firstName: action.payload.firstName,
-      lastName: action.payload.lastName,
-      rate: action.payload.rate,
-      employmentDate: '',
-      creationDate: '',
-      jobs: [],
-      id: 100,
-    }));
+    const jobsAsNumber = action.payload.jobs.map(id => parseInt(id.toString(), 10));
+    const data: Employee = yield call(EmployeeApi.createEmployee, {
+      ...action.payload,
+      jobs: jobsAsNumber,
+      rate: parseInt(action.payload.rate.toString(), 10)
+    });
+    yield put(EmployeeActions.createEmployeeSucceeded(data));
   } catch (error) {
     console.error(error);
   }
@@ -43,9 +34,10 @@ function* createEmployee(action: ActionWith<EmployeeFormModel>): SagaIterator {
 
 function* deleteEmployee(action: ActionWith<number>): SagaIterator {
   try {
-    // delete with Api -> bool
-
-    yield put(EmployeeActions.deleteEmployeeSucceeded(action.payload));
+    const data: boolean = yield call(EmployeeApi.deleteEmployee, action.payload)
+    if (data) {
+      yield put(EmployeeActions.deleteEmployeeSucceeded(action.payload));
+    }
   } catch (error) {
     console.error(error);
   }
@@ -53,14 +45,8 @@ function* deleteEmployee(action: ActionWith<number>): SagaIterator {
 
 function* loadJobList(action: Action): SagaIterator {
   try {
-    // load from API:
-    const mock: Job[] = [
-      { id: 1, title: 'Developer' },
-      { id: 2, title: 'CEO' },
-      { id: 3, title: 'Marketing' },
-    ];
-
-    yield put(EmployeeActions.loadJobListSucceeded(mock));
+    const data: Job[] = yield call(EmployeeApi.loadJobList)
+    yield put(EmployeeActions.loadJobListSucceeded(data));
   } catch (error) {
     console.error(error);
   }

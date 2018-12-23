@@ -50,10 +50,8 @@ module.exports = {
     watchContentBase: true,
     stats: 'minimal',
     disableHostCheck: true,
-    /* proxy: [{
-      context: ['/admin', '/common'],
-      target: 'http://localhost:51171',
-      // changeOrigin: true,
-    }], */
+    proxy: {
+      '/api': 'http://localhost:5000',
+    },
   },
 }
