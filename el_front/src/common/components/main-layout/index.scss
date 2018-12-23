@@ -1,0 +1,9 @@
+@import '../../styles/settings.scss';
+
+.main-layout {
+  &__content {
+    margin: 0 auto;
+    margin-top: $header-height;
+    max-width: $max-content-width;
+  }
+}

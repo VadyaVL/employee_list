@@ -1,0 +1,53 @@
+.dialog {
+  border-radius: 6px;
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    background-color: rgba(16, 22, 26, .7);  // Like as blueprint
+  }
+  &__header {
+    background: #ebf1f5;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__content {
+    background: white;
+    padding: 5px 10px;
+  }
+  &__title {
+    font-weight: 700;
+  }
+  &__close-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 0;
+    width: 20px;
+    height: 20px;
+    > span {
+      font-size: 26px;
+    }
+    &:hover {
+      background: rgba(16, 22, 26, .3);
+    }
+  }
+  &__action {
+    background: white;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

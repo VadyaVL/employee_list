@@ -1,0 +1,11 @@
+.row {
+  width: 100%;
+  &.header {
+    font-weight: 700;
+  }
+}
+
+.col {
+  display: inline-block;
+  margin: 4px 6px;
+}

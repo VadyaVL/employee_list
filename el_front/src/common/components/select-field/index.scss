@@ -1,0 +1,19 @@
+.select-field {
+  display: flex;
+  position: relative;
+  padding: 10px 0 14px 0;
+  > label {
+    width: 150px;
+  }
+  > select {
+    flex: 1;
+    // min-width: 200px;
+  }
+  &__error {
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}

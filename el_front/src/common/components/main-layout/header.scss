@@ -1,0 +1,27 @@
+@import '../../styles/settings.scss';
+
+.main-header {
+  height: $header-height;
+  background-color: $header-background;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  &__content {
+    margin: 0 auto;
+    max-width: $max-content-width;
+    line-height: $header-height;
+    height: 100%;
+  }
+  &__logo {
+    display: inline-block;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 700;
+    &:hover {
+      
+    }
+  }
+}
