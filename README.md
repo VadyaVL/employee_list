@@ -6,5 +6,7 @@
 - DataBase instead of JSON;
 - etc.
 
-## Screenshots:
-![Screenshot](screenshots/main.png)
+### Screenshots:
+![Main](https://github.com/VadyaVL/employee_list/blob/master/screenshots/main.PNG)
+![Confirmation](https://github.com/VadyaVL/employee_list/blob/master/screenshots/confirmation.PNG)
+![Creation](https://github.com/VadyaVL/employee_list/blob/master/screenshots/creation.PNG)
